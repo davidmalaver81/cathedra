@@ -26,7 +26,7 @@ C4Container
 
     System_Boundary(cathedra, "Sistema Cathedra") {
         Container(cliente, "Cliente web", "HTML, CSS, Bootstrap", "Interfaz de usuario")
-        Container(backend, "Servidor backend", "JavaScript (Node.js)", "Logica de negocio y API")
+        Container(backend, "Servidor backend", "Django", "Logica de negocio y API")
         ContainerDb(db, "Base de datos", "MySQL", "Almacena la informacion")
     }
 
