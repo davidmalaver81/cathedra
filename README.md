@@ -62,4 +62,4 @@ C4Container
 
 - Cliente <-> Servidor: protocolo HTTP/HTTPS, garantizando el cifrado de la informacion transmitida.
 
-- Servidor <-> Base de datos: consultas SQL mediante un driver u ORM de Node.js compatible con MySQL (por ejemplo, mysql2 o Sequelize).
+- Servidor <-> Base de datos: consultas SQL mediante un driver u ORM de Django compatible con MySQL (por ejemplo, mysql2 o Sequelize).
