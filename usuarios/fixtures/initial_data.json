@@ -1,0 +1,42 @@
+[
+{
+  "model": "usuarios.rol",
+  "pk": 1,
+  "fields": {
+    "nombre_rol": "Administrador"
+  }
+},
+{
+  "model": "usuarios.rol",
+  "pk": 2,
+  "fields": {
+    "nombre_rol": "Estudiante"
+  }
+},
+{
+  "model": "usuarios.usuario",
+  "pk": 1,
+  "fields": {
+    "nombre": "Maria",
+    "apellido": "Garcia",
+    "correo": "m.garcia@mail.com",
+    "contrasena": "pbkdf2_sha256$1200000$bxgDSCE2Wz6HJRN9VEtGwE$a1bCGO4SnVaVsztDCJGjigrq0EZdFiEa9yM/O/HVWoM=",
+    "telefono": null,
+    "fecha_registro": "2026-05-16T22:20:18.221Z",
+    "id_rol": 2
+  }
+},
+{
+  "model": "usuarios.usuario",
+  "pk": 2,
+  "fields": {
+    "nombre": "Carlos",
+    "apellido": "Lopez",
+    "correo": "c.lopez@mail.com",
+    "contrasena": "pbkdf2_sha256$1200000$wPlITbeZAz0yxSMDutTT6t$2cTuM6VLHo5rppBV9QnjP00Yx2Z84ekWK8hl/kn2V1o=",
+    "telefono": null,
+    "fecha_registro": "2026-05-16T22:20:18.603Z",
+    "id_rol": 2
+  }
+}
+]

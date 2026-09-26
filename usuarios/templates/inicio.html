@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cathedra — Inicio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0d0d0d;
+      font-family: 'Jost', sans-serif;
+      min-height: 100vh;
+      color: #c8bfaf;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 10%, rgba(139,115,85,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .top-line {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #8b7355, transparent);
+      z-index: 100;
+    }
+
+    nav {
+      position: fixed;
+      top: 1px; left: 0; right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      background: rgba(13,13,13,0.95);
+      border-bottom: 1px solid rgba(139,115,85,0.12);
+      z-index: 99;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: #e8e0d0;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+
+    .nav-user { font-size: 12px; color: #8b7355; letter-spacing: 1.5px; font-weight: 300; }
+    .nav-user span { color: #c8a96e; font-weight: 400; }
+
+    .logout-btn {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #666;
+      text-decoration: none;
+      border: 1px solid rgba(139,115,85,0.2);
+      padding: 6px 14px;
+      transition: all 0.3s;
+    }
+
+    .logout-btn:hover {
+      color: #c8a96e;
+      border-color: rgba(139,115,85,0.5);
+      background: rgba(139,115,85,0.06);
+    }
+
+    .hero {
+      padding: 140px 40px 80px;
+      max-width: 900px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #8b7355;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 300;
+      color: #e8e0d0;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .hero-title em { font-style: italic; color: #c8a96e; }
+
+    .hero-divider { width: 40px; height: 1px; background: #8b7355; margin-bottom: 24px; opacity: 0.6; }
+
+    .hero-desc {
+      font-size: 15px;
+      font-weight: 300;
+      color: #666;
+      line-height: 1.9;
+      max-width: 480px;
+      margin-bottom: 48px;
+    }
+
+    .stats { display: flex; gap: 0; margin-bottom: 64px; animation: fadeUp 0.9s ease 0.2s both; }
+
+    .stat { padding: 0 32px 0 0; margin-right: 32px; border-right: 1px solid rgba(139,115,85,0.2); }
+    .stat:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: #c8a96e;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: #444; }
+
+    .cards-section { padding: 0 40px 80px; animation: fadeUp 0.9s ease 0.35s both; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(139,115,85,0.15); }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: rgba(139,115,85,0.1);
+    }
+
+    .card {
+      background: #0d0d0d;
+      padding: 28px;
+      transition: background 0.3s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139,115,85,0.4), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+
+    .card:hover { background: rgba(139,115,85,0.04); }
+    .card:hover::before { transform: scaleX(1); }
+
+    .card-icon { font-size: 20px; margin-bottom: 16px; opacity: 0.7; }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: #d4c9b8;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .card-desc { font-size: 12px; font-weight: 300; color: #555; line-height: 1.7; }
+
+    footer {
+      border-top: 1px solid rgba(139,115,85,0.1);
+      padding: 24px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: #333; letter-spacing: 3px; text-transform: uppercase; }
+    .footer-copy { font-size: 10px; color: #2e2e2e; letter-spacing: 1.5px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .hero { padding: 120px 24px 60px; }
+      .cards-section { padding: 0 24px 60px; }
+      .stats { flex-wrap: wrap; gap: 24px; }
+      .stat { padding: 0; margin-right: 0; border-right: none; }
+      footer { padding: 20px 24px; }
+    }
+
+    @media (max-width: 480px) {
+      nav { padding: 0 16px; }
+      .nav-brand { font-size: 18px; letter-spacing: 3px; }
+      .nav-user { display: none; }
+      .hero { padding: 100px 16px 48px; }
+      .cards-section { padding: 0 16px 48px; }
+      .stats { flex-direction: column; gap: 16px; }
+      footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-line"></div>
+  <nav>
+    <div class="nav-brand">Cathedra</div>
+    <div class="nav-right">
+      <div class="nav-user">Bienvenido, <span>{{ request.session.usuario_nombre }}</span></div>  
+      <a href="{% url 'logout' %}" class="logout-btn">Cerrar sesión</a>
+    </div>
+  </nav>
+  <main>
+  <section class="hero">
+    <div class="hero-eyebrow">Plataforma educativa · Colombia</div>
+    <h1 class="hero-title">Tu camino hacia<br>la <em>educación superior</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">Centraliza tu búsqueda de becas, programas académicos y oportunidades de financiamiento en un solo lugar.</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-number">240+</div><div class="stat-label">Becas</div></div>
+      <div class="stat"><div class="stat-number">80+</div><div class="stat-label">Universidades</div></div>
+      <div class="stat"><div class="stat-number">12</div><div class="stat-label">Programas</div></div>
+    </div>
+  </section>
+  <section class="cards-section">
+    <div class="section-label">Explorar</div>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">◈</div>
+        <div class="card-title">Becas disponibles</div>
+        <div class="card-desc">Encuentra oportunidades de financiamiento según tu perfil y necesidades académicas.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">◇</div>
+        <div class="card-title">Programas académicos</div>
+        <div class="card-desc">Explora la oferta universitaria disponible en instituciones de todo el país.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">○</div>
+        <div class="card-title">Mi perfil</div>
+        <div class="card-desc">Gestiona tu información personal y preferencias para obtener mejores recomendaciones.</div>
+      </div>
+    </div>
+  </section>
+  </main>
+  <footer>
+    <div class="footer-brand">Cathedra</div>
+    <div class="footer-copy">Universidad de San Buenaventura · Bogotá · 2025</div>
+  </footer>
+</body>
+</html>
