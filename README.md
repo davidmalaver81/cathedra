@@ -55,7 +55,7 @@ C4Container
 | Capa | Tecnologia | Funcion principal |
 | --- | --- | --- |
 | Cliente (frontend) | HTML5, CSS3, Bootstrap | Estructura, estilo y diseno responsivo de la interfaz que usa el estudiante. |
-| Servidor (backend) | JavaScript (Node.js) | Procesa peticiones, aplica la logica de negocio (busquedas, validaciones, gestion de usuarios) y se comunica con la base de datos. |
+| Servidor (backend) | Django | Procesa peticiones, aplica la logica de negocio (busquedas, validaciones, gestion de usuarios) y se comunica con la base de datos. |
 | Base de datos | MySQL | Almacena la informacion de usuarios, universidades, becas y programas academicos. |
 
 ## 1.3. Comunicacion entre capas
