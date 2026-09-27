@@ -2,57 +2,129 @@
 {% load static %}
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cathedra — Inicio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'usuarios/css/inicio.css' %}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cathedra — Inicio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'usuarios/css/inicio.css' %}">
 </head>
 <body>
-  <div class="top-line"></div>
-  <nav>
-    <div class="nav-brand">Cathedra</div>
-    <div class="nav-right">
-      <div class="nav-user">Bienvenido, <span>{{ request.session.usuario_nombre }}</span></div>  
-      <a href="{% url 'logout' %}" class="logout-btn">Cerrar sesión</a>
+
+<!-- NAV -->
+<nav>
+  <a href="{% url 'landing' %}" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3L2 8l10 5 10-5-10-5zM2 16l10 5 10-5M2 12l10 5 10-5"/></svg>
     </div>
-  </nav>
-  <main>
-  <section class="hero">
-    <div class="hero-eyebrow">Plataforma educativa · Colombia</div>
-    <h1 class="hero-title">Tu camino hacia<br>la <em>educación superior</em></h1>
-    <div class="hero-divider"></div>
-    <p class="hero-desc">Centraliza tu búsqueda de becas, programas académicos y oportunidades de financiamiento en un solo lugar.</p>
-    <div class="stats">
-      <div class="stat"><div class="stat-number">240+</div><div class="stat-label">Becas</div></div>
-      <div class="stat"><div class="stat-number">80+</div><div class="stat-label">Universidades</div></div>
-      <div class="stat"><div class="stat-number">12</div><div class="stat-label">Programas</div></div>
+    <div>
+      <span style="font-family:var(--serif);font-size:18px;display:block;line-height:1.2;">Cathedra</span>
+      <span class="nav-logo-sub">Tu futuro, sin límites</span>
     </div>
-  </section>
-  <section class="cards-section">
-    <div class="section-label">Explorar</div>
-    <div class="cards-grid">
-      <div class="card">
-        <div class="card-icon">◈</div>
-        <div class="card-title">Becas disponibles</div>
-        <div class="card-desc">Encuentra oportunidades de financiamiento según tu perfil y necesidades académicas.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">◇</div>
-        <div class="card-title">Programas académicos</div>
-        <div class="card-desc">Explora la oferta universitaria disponible en instituciones de todo el país.</div>
-      </div>
-      <div class="card">
-        <div class="card-icon">○</div>
-        <div class="card-title">Mi perfil</div>
-        <div class="card-desc">Gestiona tu información personal y preferencias para obtener mejores recomendaciones.</div>
-      </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#recomendadas">Recomendadas</a></li>
+    <li><a href="#resumen">Mi resumen</a></li>
+    <li><a href="{% url 'landing' %}#programas">Programas</a></li>
+    <li><a href="{% url 'landing' %}#nosotros">Sobre nosotros</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <span style="font-size:13px;color:var(--gray-600);">{{ request.session.usuario_nombre }}</span>
+    <a href="{% url 'logout' %}" class="btn-ghost">Cerrar sesión</a>
+  </div>
+</nav>
+
+<!-- BIENVENIDA -->
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow"><span></span> Tu panel personal</div>
+    <h1>Hola, <em>{{ request.session.usuario_nombre }}</em></h1>
+    <p class="hero-desc">Este es tu punto de partida en Cathedra: revisa las becas recomendadas para tu perfil y el estado de tus postulaciones.</p>
+    <div class="hero-cta">
+      <a href="#recomendadas" class="btn-primary">Ver becas recomendadas →</a>
+      <a href="#resumen" class="btn-secondary">Ver mi resumen →</a>
     </div>
-  </section>
-  </main>
-  <footer>
-    <div class="footer-brand">Cathedra</div>
-    <div class="footer-copy">Universidad de San Buenaventura · Bogotá · 2025</div>
-  </footer>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-main">
+      <div class="card-tag">Beca destacada para ti</div>
+      <div class="card-title">Beca Excelencia Universidad Nacional</div>
+      <div class="card-meta">Bogotá, Colombia · Cobertura 100%</div>
+      <div class="card-badge">Cierra en 12 días</div>
+    </div>
+    <div class="hero-card-secondary">
+      <div class="card-tag">Postulaciones activas</div>
+      <div class="hero-number">1</div>
+      <div class="hero-number-label">En proceso de revisión</div>
+    </div>
+  </div>
+</section>
+
+<!-- BECAS RECOMENDADAS -->
+<section class="features" id="recomendadas">
+  <div class="section-label">Seleccionadas para tu perfil</div>
+  <h2 class="section-title">Becas <em>recomendadas</em></h2>
+
+  <div class="features-grid">
+    <div class="feature-card fade-in">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="feature-name">Beca Excelencia Académica</div>
+      <div class="feature-desc">Universidad Nacional · Bogotá. Cobertura del 100% de la matrícula para estudiantes con promedio superior a 4.5.</div>
+      <a href="#" class="feature-link">Ver detalles →</a>
+    </div>
+
+    <div class="feature-card fade-in" style="transition-delay:0.1s">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="feature-name">Beca Talento Deportivo</div>
+      <div class="feature-desc">Universidad de Antioquia · Medellín. Cobertura del 50% para deportistas de alto rendimiento.</div>
+      <a href="#" class="feature-link">Ver detalles →</a>
+    </div>
+
+    <div class="feature-card fade-in" style="transition-delay:0.2s">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>
+      </div>
+      <div class="feature-name">Beca Internacional Erasmus+</div>
+      <div class="feature-desc">Convenio con universidades europeas. Cobertura completa más manutención mensual.</div>
+      <a href="#" class="feature-link">Ver detalles →</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESUMEN PERSONAL -->
+<section class="stats" id="resumen">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Becas guardadas</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">1</div>
+      <div class="stat-label">Postulaciones enviadas</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">5</div>
+      <div class="stat-label">Programas en seguimiento</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">12</div>
+      <div class="stat-label">Días para el próximo cierre</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Cathedra</div>
+  <div class="footer-copy">Universidad de San Buenaventura · Bogotá · 2025</div>
+</footer>
+
+<script src="{% static 'usuarios/js/inicio.js' %}"></script>
 </body>
 </html>
