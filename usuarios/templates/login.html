@@ -21,7 +21,7 @@
       {% if error %}
         <div class="error-msg">{{ error }}</div>
       {% endif %}
-      <form method="post" id="form-login" novalidate>
+      <form method="post" action="{% url 'login' %}" id="form-login" novalidate></form>
         {% csrf_token %}
         <div class="field">
           <label for="login-username">Email *</label>
